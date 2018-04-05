@@ -1,13 +1,13 @@
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { combineReducers } from 'redux';
-import comments from './comments.js';
-import users from './users.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import {Provider} from 'react-redux';
 
-const reducer = combineReducers({
-	comments,
-	users
-});
+import {createStore} from 'redux';
+import reducer from './reducer.js';
+import {addComment} from './actions.js';
 
 const store = createStore(reducer);
 
@@ -18,5 +18,7 @@ ReactDOM.render(
 	document.getElementById('root')
 );
 
-store.dispatch(addComment('pierwszy komentarz'));
-store.dispatch(addComment('drugi komentarz'));
+registerServiceWorker();
+
+store.dispatch(addComment('first comment'));
+store.dispatch(addComment('second comment'));
